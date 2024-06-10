@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="main">
+<head>
+    <meta charset="UTF-8">
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="js/main.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+
+    <title>Main</title>
+</head>
+<body ng-controller="MainController">
+<header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+    <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none" href="{{TypeTests}}">
+        <svg class="bi me-2" height="32" width="40">
+            <use xlink:href="#bootstrap"></use>
+        </svg>
+        <span class="fs-4">WorkTracker</span>
+    </a>
+
+    <ul class="nav nav-pills">
+        <li class="nav-item"><a aria-current="page" class="nav-link active" href="{{TypeMain}}">Главная</a></li>
+        <li class="nav-item"><a class="nav-link" href="profile.html">Профиль</a></li>
+        <li class="nav-item"><a href="graphics.html" class="nav-link" id="WorkResults">Результаты</a></li>
+        <li class="nav-item"><a href="Articles.html" class="nav-link">Статьи</a></li>
+        <li class="nav-item"><a aria-current="page" class="nav-link" href="{{TypeTests}}">Тесты</a></li>
+        <li class="nav-item"><a href="usersList.html" class="nav-link">Список участников</a></li>
+
+        <link href="css/TestCreate/Styles.css" rel="stylesheet">
+    </ul>
+</header>
+<div class="container">
+    <div class="main-body">
+        <div class="row gutters-sm">
+            <div class="col-md-1 mb-3">
+            </div>
+            <div class="col-md-10">
+                <div class="row gutters-sm">
+                    <div class="col-sm-13 mb-3">
+                        <div class="card h-40">
+                            <div class="card-body" style="box-shadow: #0f0f0f">
+                                <h3 class="d-flex align-items-center mb-3" id="infoButton">Главная страница</h3>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="card h-40">
+                            <div class="card-body">
+                                <h5 class="card-title">Календарь</h5>
+                                <div class="calendar">
+                                    <input type="date" name="date" value="{{ToDayDate}}" ng-model="ToDayDate" ng-change="checkTime()"> <!-- Поле ввода для выбора даты -->
+                                </div>
+                                <h5 class="card-title mt-4">Время работы</h5>
+                                <div class="form-group">
+                                    <button id="start" class="btn btn-primary" ng-click="addTime()">Начало работы</button>
+                                    <input type="text" id="start_time" value="{{StartTime}}" ng-model="StartTime" readonly>
+                                </div>
+<!--                                                                <br>-->
+                                <div class="form-group">
+                                    <button id="end" class="btn btn-primary" ng-click="updateTime()" >Окончание работы</button>
+                                    <input type="text" id="end_time" value="{{EndTime}}" ng-model="EndTime" readonly>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="form-group col-md-10">
+                                <h3 for="UserSelect">Список работников</h3>
+                                <div class="d-flex">
+                                    <select class="form-control mr-2" id="UserSelect" ng-model="user.id" style="width: 275px">
+                                        <option ng-repeat="user in Users" value="{{user.id}}">{{user.name}}</option>
+                                    </select>
+                                    <input placeholder="Задача"  type="text" id="task" value="{{Task.task}}" ng-model="Task.task" >
+                                    <div class="calendar">
+                                        <input type="date" name="date" value="{{TaskDate}}" ng-model="TaskDate" > <!-- Поле ввода для выбора даты -->
+                                    </div>
+                                    <button type="button" class="button btn-success" ng-click="GiveTask()">Добавить</button>
+                                </div>
+                            </div>
+                            <div class="card h-100">
+                                <table cellpadding="0" cellspacing="0" class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <td>ФИО</td>
+                                        <td>Задание</td>
+                                        <td>Дата</td>
+                                        <td>Статус</td>
+                                        <td></td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="task in Tasks">
+                                        <td>{{task.user_name}}</td>
+                                        <td>{{task.task}}</td>
+                                        <td>{{task.date}}</td>
+                                        <td >{{task.status}}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" id="DeleteTaskButton" ng-click="DeleteTask(task)">
+                                                Удалить задачу
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>

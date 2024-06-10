@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="testInfo">
+<head>
+  <meta charset="UTF-8">
+  <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.js"></script>
+  <script src="js/testInfo.js"></script>
+  <title>Test info</title>
+</head>
+<body ng-controller="TestInfoController">
+<header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+  <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none" href="{{TypeTests}}">
+    <svg class="bi me-2" height="32" width="40">
+      <use xlink:href="#bootstrap"></use>
+    </svg>
+    <span class="fs-4">WorkTracker</span>
+  </a>
+
+  <ul class="nav nav-pills">
+    <li class="nav-item"><a aria-current="page" class="nav-link active" href="{{TypeMain}}">Главная</a></li>
+    <li class="nav-item"><a class="nav-link" href="profile.html">Профиль</a></li>
+    <li class="nav-item"><a href="graphics.html" class="nav-link" id="WorkResults">Результаты</a></li>
+    <li class="nav-item"><a href="Articles.html" class="nav-link">Статьи</a></li>
+    <li class="nav-item"><a aria-current="page" class="nav-link" href="{{TypeTests}}">Тесты</a></li>
+    <li class="nav-item"><a class="nav-link" href="usersList.html">Список участников</a></li>
+    <link href="css/TestCreate/Styles.css" rel="stylesheet">
+  </ul>
+</header>
+
+<section class="vh-70">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-12 col-xl-18">
+        <div class="card text-black" style="border-radius: 25px;">
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Информация по тесту</p>
+                <div ng-repeat="Question in Questions">
+                <label class="form-label" for="form3Example7c" style="color: #ff6b40">Вопрос {{Question.NumberOfQuestion}}</label>
+                <input class="form-control" id="form3Example7c" ng-model="Question.question"
+                       type="text" readonly/>
+                <label class="form-label" for="form3Example8c">1 ответ</label>
+                <input class="form-control" id="form3Example8c" ng-model="Question.answer.answer1"
+                       type="text" readonly/>
+                <label class="form-label" for="form3Example9c">2 ответ</label>
+                <input class="form-control" id="form3Example9c" ng-model="Question.answer.answer2"
+                       type="text" readonly/>
+                <label class="form-label" for="form3Example6c">3 ответ</label>
+                <input class="form-control" id="form3Example6c" ng-model="Question.answer.answer3"
+                       type="text" readonly/>
+                <label class="form-label" for="form3Example0c">Правильный ответ</label>
+                <input class="form-control" id="form3Example0c" ng-model="Question.answer.correct"
+                       type="text" readonly/>
+                  <br>
+                  <br>
+                </div>
+              </div>
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-2">
+                <br><br><br>
+                <br><br>
+                <form class="mx-1 mx-md-4">
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="form3Example1c">Название теста</label>
+                      <input class="form-control" id="form3Example1c" ng-model="Test.title"
+                             type="text" readonly/>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="form3Example3c">Категория участников</label>
+                      <input class="form-control" id="form3Example3c" ng-model="Test.user_category"
+                              type="text" readonly />
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="form3Example4c">Проходной балл</label>
+                      <input class="form-control" id="form3Example4c" ng_model="Test.passing_score"
+                             type="number" readonly/>
+                    </div>
+                  </div>
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="form3Example5c">Средний балл</label>
+                      <input class="form-control" id="form3Example5c" ng_model="Avarage"
+                             type="number" readonly/>
+                    </div>
+                  </div>
+                </form>
+
+                <br>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

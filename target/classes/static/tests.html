@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="tests">
+<head>
+    <meta charset="UTF-8">
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.js"></script>
+    <script src="js/tests.js"></script>
+    <title>Main</title>
+</head>
+<body ng-controller="MainController">
+<header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+    <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none" href="{{TypeTests}}">
+        <svg class="bi me-2" height="32" width="40">
+            <use xlink:href="#bootstrap"></use>
+        </svg>
+        <span class="fs-4">WorkTracker</span>
+    </a>
+
+    <ul class="nav nav-pills">
+        <li class="nav-item"><a aria-current="page" class="nav-link active" href="{{TypeMain}}">Главная</a></li>
+        <li class="nav-item"><a class="nav-link" href="profile.html">Профиль</a></li>
+        <li class="nav-item"><a href="graphics.html" class="nav-link" id="WorkResults">Результаты</a></li>
+        <li class="nav-item"><a href="Articles.html" class="nav-link">Статьи</a></li>
+        <li class="nav-item"><a aria-current="page" class="nav-link" href="{{TypeTests}}">Тесты</a></li>
+<!--        <li class="nav-item"><a class="nav-link" href="usersList.html">Список участников</a></li>-->
+        <!--    <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>-->
+        <!--    <li class="nav-item"><a href="#" class="nav-link">About</a></li>-->
+        <link href="css/TestCreate/Styles.css" rel="stylesheet">
+    </ul>
+</header>
+<div class="container">
+    <div class="main-body">
+        <div class="row gutters-sm">
+            <div class="col-md-1 mb-3">
+            </div>
+            <div class="col-md-10">
+                <div class="row gutters-sm">
+                    <div class="col-sm-13 mb-3">
+                        <div class="card h-40">
+                            <div class="card-body" style="box-shadow: #0f0f0f">
+                                <h3 class="d-flex align-items-center mb-3" id="infoButton" >Список всех тестирований</h3>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="card h-100">
+                            <table cellpadding="0" cellspacing="0" class="table table-hover">
+                                                                <thead>
+                                                                <tr>
+                                                                    <td>Название теста</td>
+                                                                    <td>Категория участников</td>
+                                                                    <td>Проходной балл</td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                </tr>
+                                                                </thead>
+                                <tbody>
+                                <tr ng-repeat="test in Tests" ng-repeat="page in Pages">
+                                    <td>{{test.title}}</td>
+                                    <td>{{test.user_category}}</td>
+                                    <td>{{test.passing_score}}</td>
+                                    <td ></td>
+                                    <td>
+                                        <button type="button" class="button btn-primary" id="PassTestButton" ng-click="TakeTest(test)">
+                                            Пройти тест
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
